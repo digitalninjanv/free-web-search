@@ -1,0 +1,4 @@
+# Minimum versions are the ones this skill was tested against.
+curl_cffi>=0.16.3
+trafilatura>=2.2.0
+lxml>=6.1.3
