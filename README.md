@@ -34,6 +34,36 @@ pip install -r scripts/requirements.txt
 
 Dependencies: `curl_cffi`, `trafilatura`, `lxml` (minimum versions in `scripts/requirements.txt` are the ones tested).
 
+### Use as an agent skill
+
+This repo is a valid [Agent Skill](https://agentskills.io): the agent reads `SKILL.md` and runs `scripts/websearch.py` for you. Install it where your agent looks for skills (the directory name must stay `web-search` so it matches the skill name).
+
+**Pi agent** (global):
+
+```bash
+mkdir -p ~/.pi/agent/skills
+unzip web-search.zip -d ~/.pi/agent/skills/web-search
+# or: git clone <repo-url> ~/.pi/agent/skills/web-search
+pip install -r ~/.pi/agent/skills/web-search/scripts/requirements.txt
+```
+
+**OpenCode** (global):
+
+```bash
+mkdir -p ~/.config/opencode/skills
+unzip web-search.zip -d ~/.config/opencode/skills/web-search
+# or: git clone <repo-url> ~/.config/opencode/skills/web-search
+pip install -r ~/.config/opencode/skills/web-search/scripts/requirements.txt
+```
+
+Project-local alternative for OpenCode: `.opencode/skills/web-search/` inside your project. OpenCode also scans `~/.agents/skills/`, handy if you share skills across agents.
+
+Restart the agent afterwards so it picks up the new skill, then verify:
+
+```bash
+python3 ~/.config/opencode/skills/web-search/scripts/websearch.py search "test" --num 1 --urls-only
+```
+
 ## Quickstart
 
 ```bash
